@@ -1,10 +1,12 @@
-function Computer() {
+function Computer(size) {
+  console.log(size);
   const hit = [];
-  function attack(size) {
-    let pos = 0;
-    while (hit.findIndex(pos) !== -1) {
-      pos = Math.floor(Math.random() * size ** 2);
+  function attack() {
+    const pos = Math.floor(Math.random() * (size ** 2));
+    if (hit.findIndex((p) => p === pos) !== -1) {
+      return attack();
     }
+    hit.push(pos);
     return pos;
   }
   return { attack };
