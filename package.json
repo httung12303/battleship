@@ -32,5 +32,8 @@
     "style-loader": "^3.3.1",
     "webpack": "^5.76.1",
     "webpack-cli": "^5.0.1"
+  },
+  "dependencies": {
+    "normalize.css": "^8.0.1"
   }
 }
