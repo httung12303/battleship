@@ -4,7 +4,7 @@ import Display from './Display';
 import { axes } from './GameBoard';
 
 function Game() {
-  const size = 6;
+  const size = 10;
   const { X_AXIS, Y_AXIS } = axes;
 
   const computer = Computer(size);
