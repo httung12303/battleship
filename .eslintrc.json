@@ -11,6 +11,8 @@
   },
   "rules": {
     "no-console": "off",
-    "operator-linebreak": "off"
+    "operator-linebreak": "off",
+    "no-return-assign": "off",
+    "no-param-reassign": "off"
   }
 }
