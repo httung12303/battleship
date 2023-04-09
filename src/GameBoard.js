@@ -1,8 +1,9 @@
 import Ship from './Ship';
 
+const axes = { X_AXIS: 0, Y_AXIS: 1 };
+
 function GameBoard(size) {
-  const X_AXIS = 0;
-  const Y_AXIS = 1;
+  const { X_AXIS, Y_AXIS } = axes;
   const UN_HIT = 0;
   const MISSED = 1;
   const HIT = 2;
@@ -21,11 +22,25 @@ function GameBoard(size) {
 
   function shipPosValidity(pos, len, axis) {
     const row = Math.floor(pos / size);
-    if (
-      (axis === Y_AXIS && pos + len > (row + 1) * size) ||
-      (axis === X_AXIS && pos + (len - 1) * size >= size ** 2)
-    ) {
-      return false;
+    if (axis === Y_AXIS) {
+      if (pos + len > (row + 1) * size) {
+        return false;
+      }
+      for (let i = 0; i < len; i += 1) {
+        if (getTile(pos + i)) {
+          return false;
+        }
+      }
+    }
+    if (axis === X_AXIS) {
+      if (pos + (len - 1) * size >= size ** 2) {
+        return false;
+      }
+      for (let i = 0; i < len * size; i += size) {
+        if (getTile(pos + i)) {
+          return false;
+        }
+      }
     }
 
     return true;
@@ -90,7 +105,9 @@ function GameBoard(size) {
     receiveAttack,
     reset,
     allShipsSunk,
+    shipPosValidity,
   };
 }
 
+export { axes };
 export default GameBoard;
